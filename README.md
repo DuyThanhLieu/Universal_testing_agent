@@ -248,3 +248,86 @@ uta import-plugin results/plugin_packages/web-1.8.0.json
 - `runners/`: concrete test execution logic
 - `schemas/`: YAML schemas for intake/result contracts
 - `manifests/samples/`: sample manifests
+
+
+
+
+## Tóm tắt Source Code Universal Testing Agent
+
+### Cấu trúc tổng quan
+Dự án là một framework Python cho việc kiểm thử AI-driven, sử dụng kiến trúc plugin-based và manifest-driven.
+
+### Các module chính
+
+#### 1. **CLI (cli)** 
+- `main.py`: Điểm vào chính, xử lý các lệnh như `validate-manifest`, `plan`, `run`, `report`
+- Cung cấp giao diện dòng lệnh cho toàn bộ workflow
+
+#### 2. **Orchestrator (orchestrator)** 
+- **Core logic**: intake, classifier, planner, router, executor, reporter
+- **Plugins**: plugin_loader, plugins, registry, taxonomy
+- **Utilities**: models, config, contracts, history, observability, policy, quality_gates
+- **Analytics**: trends, compare, coverage_catalog
+
+#### 3. **Adapters (adapters)** 
+- Base adapter class và implementations cho từng product type:
+  - web_adapter.py: Sử dụng Playwright cho web testing
+  - `api_adapter.py`: Testing API endpoints
+  - `model_adapter.py`: Model evaluation
+  - `mobile_adapter.py`, `llm_app_adapter.py`, `rag_app_adapter.py`, `workflow_adapter.py`, `data_pipeline_adapter.py`
+- Mỗi adapter implement: discover, plan, generate_assets, execute
+
+#### 4. **Runners (runners)** 
+- Execution engines cho từng loại test:
+  - playwright_runner.py: Web smoke testing với Playwright
+  - `pytest_runner.py`: Unit/API testing
+  - Các runner khác cho mobile, model, etc.
+
+#### 5. **Schemas (schemas)** 
+- JSON schemas cho validation: manifest, result, contract, etc.
+- Định nghĩa cấu trúc dữ liệu chuẩn
+
+#### 6. **Configs & Templates** 
+- default.yaml: Cấu hình mặc định
+- templates: Templates cho reports và results
+- prompts: Prompts cho AI planning
+
+### Kiến trúc chính
+
+#### **Manifest-Driven**
+- Input: YAML manifests định nghĩa product, target, requirements
+- Workflow: validate → plan → generate-assets → run → report
+
+#### **Plugin Architecture** 
+- Adapters là plugins có thể hot-load
+- Registry quản lý capabilities và routing
+- Fallback modes cho khi không có full implementation
+
+#### **Standardized Contracts**
+- Input: Normalized intake format
+- Output: Standardized result schema với status, coverage, defects, evidence
+- Cross-adapter compatibility
+
+#### **Quality Gates & Policy**
+- Policy engine đánh giá release readiness
+- Quality gates với configurable rules
+- History tracking và trend analysis
+
+### Product Types Supported
+- **web**: Playwright-based UI testing
+- **api**: pytest-based API validation  
+- **model**: Custom model evaluation
+- **mobile**: Skeleton smoke testing
+- **llm_app**: LLM application testing
+- **rag_app**: RAG system validation
+- **workflow**: Workflow orchestration testing
+- **data_pipeline**: Data processing pipeline validation
+
+### Key Features
+- **Offline-safe**: Fallback modes khi không có live systems
+- **Deterministic**: Consistent results cho smoke testing
+- **Extensible**: Plugin system cho custom adapters
+- **Observable**: Comprehensive logging và artifact generation
+- **AI-assisted**: Planning sử dụng taxonomy và strategy prompts
+
+Dự án tập trung vào automation testing cho AI systems với approach standardized và scalable.
