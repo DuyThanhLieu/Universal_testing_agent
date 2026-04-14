@@ -1,0 +1,49 @@
+project:
+  name: mobile-app-smoke
+  type: mobile
+  subtype: android
+interfaces:
+  - name: ui
+    platform: mobile
+entry_points:
+  - name: home
+    route: home
+  - name: booking
+    route: booking
+artifacts:
+  - name: mobile-bundle-meta
+    type: mobile-metadata
+    path: manifests/samples/mobile_bundle_metadata.json
+environment:
+  stage: local
+  device_profile: emulator
+  app_id: com.example.travel
+auth:
+  required: true
+  method: session-token
+request:
+  goal: Validate install-open, navigation, permission, auth, and crash-smoke flow
+  app_id: com.example.travel
+  permissions:
+    - camera
+    - location
+  feature: booking
+acceptance:
+  max_failed: 0
+  minimum_coverage: 0.5
+outputs:
+  report_format: json
+  include_markdown: true
+oracle:
+  expected_behavior:
+    - app opens successfully
+    - booking entry is reachable
+baseline:
+  result_file: results/latest.json
+dependencies:
+  - local-mobile-emulator
+dimensions:
+  - navigation
+  - permissions
+  - auth
+  - stability

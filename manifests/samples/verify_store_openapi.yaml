@@ -1,0 +1,17 @@
+openapi: 3.0.0
+info:
+  title: Verify Store API
+  version: "1.0.0"
+paths:
+  /store/health:
+    get:
+      summary: Health check
+      responses:
+        "200":
+          description: service healthy
+  /store/items:
+    get:
+      summary: List store items
+      responses:
+        "200":
+          description: items listed

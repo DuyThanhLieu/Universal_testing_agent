@@ -1,0 +1,13 @@
+{
+  "name": "order-approval-workflow",
+  "steps": [
+    {"id": "validate_input", "next": "risk_check"},
+    {"id": "risk_check", "next": "approve_order"},
+    {"id": "approve_order", "next": "notify"}
+  ],
+  "transitions": [
+    {"from": "validate_input", "to": "risk_check"},
+    {"from": "risk_check", "to": "approve_order"},
+    {"from": "approve_order", "to": "notify"}
+  ]
+}

@@ -1,0 +1,21 @@
+project:
+  name: sample_custom_product-sample
+  type: sample_custom_product
+interfaces: []
+entry_points: []
+artifacts: []
+environment:
+  stage: local
+auth:
+  required: false
+request:
+  goal: Smoke-check sample_custom_product
+acceptance:
+  max_failed: 0
+  minimum_coverage: 0.5
+outputs:
+  report_format: json
+oracle: {}
+baseline: {}
+dependencies: []
+dimensions: []

@@ -1,0 +1,44 @@
+paths:
+  results_dir: results
+  runs_dir: results/runs
+  evidence_dir: evidence
+  latest_result_file: results/latest.json
+  latest_plan_file: results/plan_latest.json
+  latest_report_file: results/report_latest.json
+  latest_report_markdown_file: results/report_latest.md
+  latest_junit_file: results/report_latest.junit.xml
+  latest_ci_summary_file: results/ci_summary_latest.json
+  latest_quality_gates_file: results/quality_gates_latest.json
+  latest_checklist_file: results/checklist_latest.json
+  latest_checklist_markdown_file: results/checklist_latest.md
+  latest_testcases_file: results/testcases_latest.json
+  latest_testcases_markdown_file: results/testcases_latest.md
+  latest_bug_report_template_file: results/bug_report_template.md
+  latest_generated_assets_index_file: results/generated_assets_latest.json
+  history_dir: results/history
+  history_index_file: results/history/history_index.json
+  latest_trends_file: results/trends_latest.json
+  latest_trends_markdown_file: results/trends_latest.md
+  latest_contract_validation_file: results/contract_validation_latest.json
+  latest_contract_validation_markdown_file: results/contract_validation_latest.md
+  latest_compare_file: results/compare_latest.json
+  latest_compare_markdown_file: results/compare_latest.md
+  latest_coverage_catalog_file: results/coverage_catalog_latest.json
+  latest_coverage_catalog_markdown_file: results/coverage_catalog_latest.md
+  latest_plugin_packages_dir: results/plugin_packages
+  latest_imported_plugins_dir: results/imported_plugins
+timeouts:
+  web_ms: 8000
+  api_s: 10
+  model_s: 20
+runners:
+  web:
+    browser: chromium
+    headless: true
+  api:
+    pytest_args:
+      - -q
+      - --disable-warnings
+      - --maxfail=1
+  model:
+    default_threshold: 0.7

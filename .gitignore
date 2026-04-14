@@ -1,0 +1,15 @@
+.venv/
+.venv_uta/
+__pycache__/
+.pytest_cache/
+*.pyc
+.vscode/
+.idea/
+build/
+dist/
+*.egg-info/
+.env
+.env.*
+!.env.example
+results/
+evidence/

@@ -1,0 +1,15 @@
+{
+  "app_id": "com.example.travel",
+  "platform": "android",
+  "version": "1.0.0",
+  "entry_points": [
+    {
+      "name": "home",
+      "route": "home"
+    },
+    {
+      "name": "booking",
+      "route": "booking"
+    }
+  ]
+}

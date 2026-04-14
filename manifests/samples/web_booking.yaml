@@ -1,0 +1,35 @@
+﻿name: web-booking-demo
+project_type: web
+url: https://example.com
+auth:
+  required: false
+  success_selector: "#account-menu"
+feature: booking
+artifacts:
+  - name: booking-ui
+    type: page
+    url: https://example.com/booking
+environment:
+  stage: staging
+  base_url: https://example.com
+request:
+  goal: Validate booking flow smoke coverage
+  scenarios:
+    - Open landing page
+    - Open booking page
+  selectors:
+    - html
+  navigation_paths:
+    - /
+    - /booking
+acceptance:
+  max_failed: 0
+  coverage_threshold: 0.7
+constraints:
+  - Do not execute real payment transactions
+  - Use synthetic or read-only data
+outputs:
+  report_format: json
+  evidence:
+    screenshots: true
+    logs: true

@@ -1,0 +1,3 @@
+{
+  "columns": ["id", "event_type", "created_at", "amount"]
+}

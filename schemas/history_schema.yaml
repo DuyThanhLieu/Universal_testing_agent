@@ -1,0 +1,34 @@
+title: History Record Schema v1.4
+type: object
+required:
+  - run_id
+  - timestamp
+  - project_name
+  - project_type
+  - adapter
+  - status
+  - summary
+  - coverage
+  - defects
+  - release_ready
+properties:
+  run_id:
+    type: string
+  timestamp:
+    type: string
+  project_name:
+    type: string
+  project_type:
+    type: string
+  adapter:
+    type: string
+  status:
+    type: string
+  summary:
+    type: object
+  coverage:
+    type: object
+  defects:
+    type: object
+  release_ready:
+    type: boolean

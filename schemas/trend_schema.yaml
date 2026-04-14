@@ -1,0 +1,22 @@
+title: Trend Analysis Schema v1.4
+type: object
+required:
+  - runs_analyzed
+  - overall_direction
+  - pass_rate_trend
+  - coverage_trend
+  - defect_trend
+  - release_readiness_trend
+properties:
+  runs_analyzed:
+    type: integer
+  overall_direction:
+    type: string
+  pass_rate_trend:
+    type: string
+  coverage_trend:
+    type: string
+  defect_trend:
+    type: string
+  release_readiness_trend:
+    type: string

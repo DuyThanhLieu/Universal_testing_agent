@@ -1,0 +1,24 @@
+title: Quality Gates Schema v1.8
+type: object
+required:
+  - gate_status
+  - gate_reasons
+  - blocking_issues
+  - recommendation
+  - evaluated_rules
+properties:
+  gate_status:
+    type: string
+    enum: [pass, fail, warning]
+  gate_reasons:
+    type: array
+    items:
+      type: string
+  blocking_issues:
+    type: array
+    items:
+      type: string
+  recommendation:
+    type: string
+  evaluated_rules:
+    type: object

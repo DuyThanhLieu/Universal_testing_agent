@@ -1,0 +1,24 @@
+title: Coverage Catalog Schema v1.8
+type: object
+required:
+  - generated_at
+  - entries
+properties:
+  generated_at:
+    type: string
+  entries:
+    type: array
+    items:
+      type: object
+      required:
+        - plugin_name
+        - plugin_version
+        - author
+        - dependencies
+        - compatibility
+        - product_types
+        - capabilities
+        - support_level
+        - fallback_mode
+        - missing_recommended_capabilities
+        - onboarding_status

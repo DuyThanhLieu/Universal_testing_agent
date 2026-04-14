@@ -1,0 +1,33 @@
+title: Comparison Schema v1.4
+type: object
+required:
+  - current_result_path
+  - baseline_result_path
+  - changed
+  - passed_delta
+  - failed_delta
+  - coverage_delta
+  - defect_delta
+  - release_ready_changed
+  - regression_signals
+properties:
+  current_result_path:
+    type: string
+  baseline_result_path:
+    type: string
+  changed:
+    type: boolean
+  passed_delta:
+    type: integer
+  failed_delta:
+    type: integer
+  coverage_delta:
+    type: number
+  defect_delta:
+    type: integer
+  release_ready_changed:
+    type: boolean
+  regression_signals:
+    type: array
+    items:
+      type: string

@@ -1,0 +1,58 @@
+title: Manifest Schema v2 (Draft)
+type: object
+required:
+  - project
+  - interfaces
+  - entry_points
+  - artifacts
+  - environment
+  - auth
+  - request
+  - acceptance
+  - outputs
+  - oracle
+  - baseline
+  - dependencies
+  - dimensions
+properties:
+  project:
+    type: object
+    required: [name, type]
+    properties:
+      name:
+        type: string
+      type:
+        type: string
+        enum: [web, api, model, mobile, llm_app, rag_app, workflow, data_pipeline, auto]
+      subtype:
+        type: string
+  interfaces:
+    type: array
+    items:
+      type: object
+  entry_points:
+    type: array
+    items:
+      type: object
+  artifacts:
+    type: array
+    items:
+      type: object
+  environment:
+    type: object
+  auth:
+    type: object
+  request:
+    type: object
+  acceptance:
+    type: object
+  outputs:
+    type: object
+  oracle:
+    type: object
+  baseline:
+    type: object
+  dependencies:
+    type: [array, object]
+  dimensions:
+    type: [array, object]

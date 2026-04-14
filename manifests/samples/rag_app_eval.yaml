@@ -1,0 +1,48 @@
+project:
+  name: rag-app-eval
+  type: rag_app
+  subtype: retrieval-qa
+interfaces:
+  - name: chat
+    protocol: https
+entry_points:
+  - name: ask
+    target: /ask
+artifacts:
+  - name: rag-corpus
+    type: corpus
+    path: manifests/samples/rag_corpus.json
+environment:
+  stage: local
+auth:
+  required: false
+request:
+  goal: Evaluate retrieval grounding and citation quality for rag_app
+  corpus_path: manifests/samples/rag_corpus.json
+  require_citations: true
+  tools:
+    - vector_search
+  fallback_strategy: safe-no-answer
+  eval_cases:
+    - prompt: "What is the refund window?"
+      expected_contains: "30 days"
+      expected_citation: "policy/refund"
+      expected_reference: "policy/refund"
+      mock_response: "The refund window is 30 days [policy/refund]."
+      context_hit: true
+acceptance:
+  max_failed: 0
+  minimum_coverage: 0.5
+outputs:
+  report_format: json
+  include_markdown: true
+oracle:
+  grounding_required: true
+baseline:
+  result_file: results/latest.json
+dependencies:
+  - local-index
+dimensions:
+  - retrieval_grounding
+  - citation_quality
+  - hallucination_risk

@@ -1,0 +1,75 @@
+title: Plugin Inspection Schema v1.8
+type: object
+required:
+  - plugin_name
+  - plugin_version
+  - supported_product_types
+  - supported_capabilities
+  - author
+  - dependencies
+  - compatibility
+  - fallback_mode
+  - adapter_target
+  - validation
+properties:
+  plugin_name:
+    type: string
+  plugin_version:
+    type: string
+  supported_product_types:
+    type: array
+    items:
+      type: string
+  supported_capabilities:
+    type: array
+    items:
+      type: string
+  author:
+    type: string
+  dependencies:
+    type: array
+    items:
+      type: string
+  compatibility:
+    type: object
+  fallback_mode:
+    type: string
+  adapter_target:
+    type: string
+  discovered_from:
+    type: string
+  health_metadata:
+    type: object
+  validation:
+    type: object
+    required:
+      - valid
+      - errors
+      - warnings
+      - adapter_method_coverage
+      - capability_completeness
+    properties:
+      valid:
+        type: boolean
+      errors:
+        type: array
+        items:
+          type: string
+      warnings:
+        type: array
+        items:
+          type: string
+      adapter_method_coverage:
+        type: array
+        items:
+          type: string
+      capability_completeness:
+        type: number
+      missing_recommended_capabilities:
+        type: array
+        items:
+          type: string
+      support_level:
+        type: string
+      fallback_support_note:
+        type: [string, "null"]

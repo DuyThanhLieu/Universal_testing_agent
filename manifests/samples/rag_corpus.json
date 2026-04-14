@@ -1,0 +1,14 @@
+[
+  {
+    "id": "doc-1",
+    "title": "Refund Policy",
+    "text": "Customers can request a refund within 30 days with proof of purchase.",
+    "source": "policy/refund"
+  },
+  {
+    "id": "doc-2",
+    "title": "Shipping Timeline",
+    "text": "Standard shipping takes 3 to 5 business days.",
+    "source": "policy/shipping"
+  }
+]

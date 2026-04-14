@@ -1,0 +1,23 @@
+title: Plugin Onboarding Schema v1.7
+type: object
+required:
+  - plugin_name
+  - onboarding_status
+  - completeness_score
+  - missing_items
+properties:
+  plugin_name:
+    type: string
+  onboarding_status:
+    type: string
+    enum: [ready, partial, not_ready]
+  completeness_score:
+    type: number
+  missing_items:
+    type: array
+    items:
+      type: string
+  notes:
+    type: array
+    items:
+      type: string

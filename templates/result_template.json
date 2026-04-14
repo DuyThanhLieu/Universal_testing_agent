@@ -1,0 +1,62 @@
+{
+  "run_id": "",
+  "project_name": "",
+  "project_type": "web",
+  "adapter": "web",
+  "status": "blocked",
+  "started_at": "",
+  "finished_at": "",
+  "duration_seconds": 0.0,
+  "summary": {
+    "total_checks": 0,
+    "passed": 0,
+    "failed": 0,
+    "blocked": 0,
+    "skipped": 0
+  },
+  "coverage": {
+    "planned_cases": 0,
+    "executed_cases": 0,
+    "execution_rate": 0.0,
+    "requirement_coverage": 0.0
+  },
+  "defects": {
+    "blocker": 0,
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0
+  },
+  "defect_details": [],
+  "evidence": {
+    "logs": [],
+    "screenshots": [],
+    "traces": [],
+    "artifacts": []
+  },
+  "recommendation": {
+    "release_ready": false,
+    "notes": []
+  },
+  "plugin": null,
+  "plugin_validation": null,
+  "plugin_onboarding": null,
+  "support_level": null,
+  "capability_path_used": [],
+  "policy": null,
+  "quality_gates": null,
+  "run_metadata": null,
+  "generated_artifacts": [],
+  "known_gaps": [],
+  "assumptions": [],
+  "capabilities_used": [],
+  "taxonomy_coverage_focus": [],
+  "fallback_execution_note": null,
+  "trend_summary": null,
+  "contract_validation_summary": null,
+  "comparison_summary": null,
+  "regression_signals": [],
+  "flaky_suspicion_note": null,
+  "metadata": {},
+  "raw_output": {}
+}

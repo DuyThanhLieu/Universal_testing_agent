@@ -1,0 +1,52 @@
+project:
+  name: data-pipeline-validation
+  type: data_pipeline
+  subtype: batch-ingestion
+interfaces:
+  - name: file-ingest
+    protocol: local
+entry_points:
+  - name: nightly_batch
+    target: nightly_batch
+artifacts:
+  - name: pipeline-schema
+    type: schema
+    path: manifests/samples/data_pipeline_schema.json
+  - name: pipeline-batch
+    type: batch
+    path: manifests/samples/data_pipeline_batch.json
+environment:
+  stage: local
+auth:
+  required: false
+request:
+  goal: Validate schema consistency, transformation correctness, and batch handling
+  schema_path: manifests/samples/data_pipeline_schema.json
+  batch_path: manifests/samples/data_pipeline_batch.json
+  expected_columns:
+    - id
+    - event_type
+    - created_at
+    - amount
+  expected_batch_size: 2
+  transformations:
+    - normalize_amount
+    - parse_timestamp
+acceptance:
+  max_failed: 0
+  minimum_coverage: 0.5
+outputs:
+  report_format: json
+  include_markdown: true
+oracle:
+  integrity_required: true
+baseline:
+  result_file: results/latest.json
+dependencies:
+  - local-storage
+dimensions:
+  - schema_consistency
+  - transformation_correctness
+  - data_integrity
+  - batch_handling
+  - observability

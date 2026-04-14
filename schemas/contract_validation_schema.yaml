@@ -1,0 +1,18 @@
+title: Contract Validation Schema v1.4
+type: object
+required:
+  - release_ready
+  - verdict
+  - checks
+  - reasons
+properties:
+  release_ready:
+    type: boolean
+  verdict:
+    type: string
+  checks:
+    type: object
+  reasons:
+    type: array
+    items:
+      type: string

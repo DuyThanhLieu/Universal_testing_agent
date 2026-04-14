@@ -1,0 +1,53 @@
+project:
+  name: workflow-smoke
+  type: workflow
+  subtype: order-approval
+interfaces:
+  - name: event-trigger
+    protocol: local
+entry_points:
+  - name: order_submitted
+    target: order_submitted
+artifacts:
+  - name: workflow-definition
+    type: workflow-definition
+    path: manifests/samples/workflow_definition.json
+environment:
+  stage: local
+auth:
+  required: false
+request:
+  goal: Validate workflow trigger, chaining, transitions, recovery, and idempotency
+  trigger_payload:
+    order_id: "O-1001"
+    idempotency_key: "WF-KEY-1"
+  steps:
+    - id: validate_input
+    - id: risk_check
+    - id: approve_order
+  transitions:
+    - from: validate_input
+      to: risk_check
+    - from: risk_check
+      to: approve_order
+  retry_policy:
+    max_retries: 2
+    idempotent: true
+acceptance:
+  max_failed: 0
+  minimum_coverage: 0.5
+outputs:
+  report_format: json
+  include_markdown: true
+oracle:
+  expected_terminal_state: approve_order
+baseline:
+  result_file: results/latest.json
+dependencies:
+  - local-event-simulator
+dimensions:
+  - trigger_validation
+  - step_chaining
+  - state_transition
+  - error_recovery
+  - idempotency

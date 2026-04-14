@@ -1,0 +1,149 @@
+title: Result Schema v1.8
+type: object
+required:
+  - run_id
+  - project_name
+  - project_type
+  - adapter
+  - status
+  - started_at
+  - finished_at
+  - duration_seconds
+  - summary
+  - coverage
+  - defects
+  - evidence
+  - recommendation
+properties:
+  run_id:
+    type: string
+  project_name:
+    type: string
+  project_type:
+    type: string
+    enum: [web, api, model, mobile, llm_app, rag_app, workflow, data_pipeline]
+  adapter:
+    type: string
+  status:
+    type: string
+    enum: [passed, failed, blocked, error]
+  started_at:
+    type: string
+  finished_at:
+    type: string
+  duration_seconds:
+    type: number
+  summary:
+    type: object
+    required: [total_checks, passed, failed, blocked, skipped]
+  coverage:
+    type: object
+    required: [planned_cases, executed_cases, execution_rate, requirement_coverage]
+  defects:
+    type: object
+    required: [blocker, critical, high, medium, low]
+  defect_details:
+    type: array
+    items:
+      type: object
+      required: [id, severity, category, reproducibility, confidence_score, message]
+      properties:
+        id:
+          type: string
+        severity:
+          type: string
+          enum: [blocker, critical, high, medium, low]
+        category:
+          type: string
+          enum: [functional, contract, performance, data, model]
+        reproducibility:
+          type: string
+          enum: [deterministic, flaky, unknown]
+        confidence_score:
+          type: number
+        message:
+          type: string
+        details:
+          type: object
+  evidence:
+    type: object
+    required: [logs, screenshots, traces, artifacts]
+  recommendation:
+    type: object
+    required: [release_ready, notes]
+  plugin:
+    type: [object, "null"]
+  plugin_validation:
+    type: [object, "null"]
+  plugin_onboarding:
+    type: [object, "null"]
+  support_level:
+    type: [string, "null"]
+  coverage_catalog_reference:
+    type: [string, "null"]
+  capability_path_used:
+    type: array
+    items:
+      type: string
+  policy:
+    type: [object, "null"]
+  quality_gates:
+    type: [object, "null"]
+    properties:
+      gate_status:
+        type: string
+        enum: [pass, fail, warning]
+      gate_reasons:
+        type: array
+        items:
+          type: string
+      blocking_issues:
+        type: array
+        items:
+          type: string
+      recommendation:
+        type: string
+      evaluated_rules:
+        type: object
+  run_metadata:
+    type: [object, "null"]
+  generated_artifacts:
+    type: array
+    items:
+      type: string
+  known_gaps:
+    type: array
+    items:
+      type: string
+  assumptions:
+    type: array
+    items:
+      type: string
+  capabilities_used:
+    type: array
+    items:
+      type: string
+  capability_coverage_summary:
+    type: object
+  taxonomy_coverage_focus:
+    type: array
+    items:
+      type: string
+  fallback_execution_note:
+    type: [string, "null"]
+  trend_summary:
+    type: [object, "null"]
+  contract_validation_summary:
+    type: [object, "null"]
+  comparison_summary:
+    type: [object, "null"]
+  regression_signals:
+    type: array
+    items:
+      type: string
+  flaky_suspicion_note:
+    type: [string, "null"]
+  metadata:
+    type: object
+  raw_output:
+    type: object
